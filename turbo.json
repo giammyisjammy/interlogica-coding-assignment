@@ -7,6 +7,12 @@
       // "outputs" are defined in Workspace Configurations: https://turbo.build/repo/docs/core-concepts/monorepos/configuring-workspaces
       "dependsOn": ["^build"]
     },
+    "db:migrate:deploy": {},
+    "db:push": {},
+    "db:seed": {},
+    "generate": {
+      "dependsOn": ["^generate"]
+    },
     "test": {
       "outputs": ["coverage/**"],
       "dependsOn": []
