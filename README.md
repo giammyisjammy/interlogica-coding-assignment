@@ -117,3 +117,14 @@ pnpm db:seed
 ```
 
 For further more information on migrations, seeding & more, I recommend reading through the [Prisma Documentation](https://www.prisma.io/docs/).
+
+## Things that can be improved
+
+- Architecture
+  - Use same version of common libraries (e.g. React, typescript) across various apps and packages
+- Backend
+  - Integration with `tRPC` for better typechecking
+- Frontend
+  - Real design system! Right now the `ui` package serves only to demonstrate the architectural benefits of this approach (please don't try to glean any design best-practices from stuff like this!)
+  - Performance audit
+  - Accessibility audit
