@@ -1,3 +1,6 @@
 module.exports = {
-  extends: ["custom/server"],
+  extends: ['custom/nestjs'],
+  parserOptions: {
+    tsconfigRootDir: __dirname,
+  },
 };
