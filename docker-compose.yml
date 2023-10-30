@@ -1,4 +1,4 @@
-version: "3"
+version: '3'
 
 volumes:
   database:
@@ -15,5 +15,6 @@ services:
     environment:
       MYSQL_DATABASE: bakery
       MYSQL_ALLOW_EMPTY_PASSWORD: 1
+      # DATABASE_URL: mysql://root@127.0.0.1:3306/bakery
     volumes:
       - database:/var/lib/mysql

@@ -68,7 +68,7 @@ model Storefront {
   id         String     @id @default(cuid())
   product    Product    @relation(fields: [productId], references: [id])
   productId  String
-  quantity   String
+  quantity   Int
   status     SaleStatus @default(fresh)
   created_at DateTime
 }
