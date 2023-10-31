@@ -15,23 +15,6 @@ This is my proposed solution for the Interlogica coding assignment. It uses a Tu
   - [Happy point # 2](#happy-point--2-it-wassatisfactory)
   - [Things that can be improved](#things-that-can-be-improved)
 
-I documented my thought process and decisions in various READMEs across the project.
-
-### Apps
-
-- [admin](apps/admin/README.md)
-- [api](apps/api/README.md)
-- [storefront](apps/storefront/README.md)
-
-### Packages
-
-- [database](packages/database/README.md)
-- [eslint-config-custom](packages/eslint-config-custom/README.md)
-- [jest-presets](packages/jest-presets/README.md)
-- [logger](packages/logger/README.md)
-- [tsconfig](packages/tsconfig/README.md)
-- [ui](packages/ui/README.md)
-
 ## Running this project
 
 Make sure you have installed the following toolchain in your machine:
@@ -80,16 +63,19 @@ This repository includes the following packages and apps:
 
 ### Apps and Packages
 
-- `api`: an [Nest.js](https://nestjs.com/) server
-- `storefront`: a [Next.js](https://nextjs.org/) app
-- `admin`: a [Vite](https://vitejs.dev/) single page app
-- `logger`: isomorphic logger (a small wrapper around console.log)
-- `database`: [Prisma](https://prisma.io/) ORM wrapper to manage & access your database
-- `ui`: a dummy React UI library (which contains a single `<CounterButton>` component)
-- `scripts`: Jest and ESLint configurations
-- `tsconfig`: tsconfig.json's used throughout the monorepo
+- [`admin`](apps/admin/README.md): a [Vite](https://vitejs.dev/) single page app
+- [`api`](apps/api/README.md): an [Nest.js](https://nestjs.com/) server
+- [`storefront`](apps/storefront/README.md): a [Next.js](https://nextjs.org/) app
+- [`database`](packages/database/README.md): [Prisma](https://prisma.io/) ORM wrapper to manage & access your database
+- [`eslint-config-custom`](packages/eslint-config-custom/README.md): Jest and ESLint configurations
+- [`jest-presets`](packages/jest-presets/README.md): Jest and ESLint configurations
+- [`logger`](packages/logger/README.md): isomorphic logger (a small wrapper around `console.log`)
+- [`tsconfig`](packages/tsconfig/README.md): tsconfig.json's used throughout the monorepo
+- [`ui`](packages/ui/README.md): a dummy React UI library (which contains a single `<CounterButton>` component)
 
 Each package and app is 100% [TypeScript](https://www.typescriptlang.org/).
+
+> 📝 I documented most of my thought process and decisions! Click on the package names to read about it in their respective READMEs ☝️
 
 ### Utilities
 
