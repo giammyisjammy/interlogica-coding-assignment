@@ -16,7 +16,7 @@ The exercise was originally geared towards using [Flexbox](https://developer.moz
 
 What I really liked of this project was the concept of [optical alignment](https://www.joshwcomeau.com/css/pixel-perfection/#going-the-extra-mile-3) which you can see throughout the grid but particularly in the Header component. I feel that today it is a detail that is becoming more and more important which separates amazing professional interfaces from just good ones.
 
-Sadly, I had to cut corners when it came to connecting the app to the `api` because I got stuck into generating the Prisma client.
+Unfortunately, I had to cut corners when it came to connecting the app to the `api` because I got stuck into generating the Prisma client.
 
 ```bash
 ➜  interlogica-coding-assignment git:(main) ✗ npx prisma migrate dev # The failing command
@@ -61,10 +61,16 @@ warn The `referentialIntegrity` attribute is deprecated. Please use `relationMod
 
 Sadly I couldn't find a quick solution for this. The web hive mind proposed some solutions but were all either time expensive, uneffective or both.
 
-- May be some symlink magic made by Volta/pnpm which broke the download [in a similar way of this Ubuntu user](https://github.com/prisma/prisma/issues/13717)
-- May be a missing/broken file from the [Prisma mirrors](https://binaries.prisma.sh). Solved by the Prisma maintainers re-running the build at a specific commit (unfortunately I cannot find the Github discussion link anymore)
-- May be some SSL support but the solution from [here](https://github.com/prisma/prisma/issues/13133) didn't work for me
-- May be some WSL/Windows specific black magic. [This guy](https://github.com/prisma/prisma/issues/1642#issuecomment-587985335) solved it by reinstalling his WSL box and re-running the command. Sadly, it is out of question for me because I cannot afford to go throughout a complete Linux reinstall on my machine ATM.
+> Some of the tries I made:
+>
+> - May be some symlink magic made by Volta/pnpm which broke the download [in a similar way of this Ubuntu user](https://github.com/prisma/prisma/issues/13717)
+> - May be a missing/broken file from the [Prisma mirrors](https://binaries.prisma.sh). Solved by the Prisma maintainers re-running the build at a specific commit (unfortunately I cannot find the Github discussion link anymore)
+> - May be some SSL support but the solution from [here](https://github.com/prisma/prisma/issues/13133) didn't work for me
+> - May be some WSL/Windows specific black magic. [This guy](https://github.com/prisma/prisma/issues/1642#issuecomment-587985335) solved it by reinstalling his WSL box and re-running the command. Sadly, it is out of question for me because I cannot afford to go throughout a complete Linux reinstall on my machine ATM.
+>
+> Of course, Docker hanging and crashing WSL at random times didn't quite worked on my favour and slowed down my progress immensely. I tried hard, for sure, but I preferred to move on.
+
+I ended up hardcoding some dummy data to make sure the UI was consistent and called it a day. After all, I think there's still a ton of value into this app - heck, the entire interface is coded from scratch without any external component libraries! I'm kinda proud of this.
 
 ## Documentation
 
