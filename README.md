@@ -17,20 +17,20 @@ This is my proposed solution for the Interlogica coding assignment. It uses a Tu
 
 I documented my thought process and decisions in various READMEs across the project.
 
-```bash
-.
-├── apps/
-│   ├── [admin](apps/admin/README.md)
-│   ├── [api](apps/api/README.md)
-│   └── [storefront](apps/storefront/README.md)
-├── packages/
-│   ├── [database](packages/database/README.md)
-│   ├── [eslint-config-custom](packages/eslint-config-custom/README.md)
-│   ├── [jest-presets](packages/jest-presets/README.md)
-│   ├── [logger](packages/logger/README.md)
-│   ├── [tsconfig](packages/tsconfig/README.md)
-│   └── [ui](packages/ui/README.md)
-```
+### Apps
+
+- [admin](apps/admin/README.md)
+- [api](apps/api/README.md)
+- [storefront](apps/storefront/README.md)
+
+### Packages
+
+- [database](packages/database/README.md)
+- [eslint-config-custom](packages/eslint-config-custom/README.md)
+- [jest-presets](packages/jest-presets/README.md)
+- [logger](packages/logger/README.md)
+- [tsconfig](packages/tsconfig/README.md)
+- [ui](packages/ui/README.md)
 
 ## Running this project
 
