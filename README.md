@@ -9,7 +9,7 @@ Make sure you have installed the following toolchain in your machine:
 - [Docker](https://docs.docker.com/engine/install/)
 - [Volta](https://docs.volta.sh/guide/getting-started)
 
-> Volta will switch to the appropriate `node` and `pnpm` version. As an alternative, take a look at `package.json` in the root of the project section to know which version to use.
+> ℹ️ Volta will switch to the appropriate `node` and `pnpm` version. As an alternative, take a look at `package.json` in the root of the project section to know which version to use.
 >
 > ```json
 > // ./package.json
@@ -29,6 +29,8 @@ You can then clone the repository and install the dependencies with:
 pnpm i
 ```
 
+Make sure to [set up the database](packages/database/README.md) according to the guide in `packages/database`.
+
 To build all apps and packages, run the following command:
 
 ```bash
@@ -38,7 +40,8 @@ pnpm build
 Or, in alternative, run the following command to develop all apps and packages:
 
 ```bash
-pnpm dev
+pnpm dev # Spins up everything
+pnpm dev --filter=admin # Spins up only selected project
 ```
 
 ## What's inside?
@@ -62,6 +65,7 @@ Each package and app is 100% [TypeScript](https://www.typescriptlang.org/).
 
 This repository has some additional tools already setup:
 
+- [Turborepo](https://turbo.build/repo/docs) for task running, building and managing task dependencies
 - [TypeScript](https://www.typescriptlang.org/) for static type checking
 - [ESLint](https://eslint.org/) for code linting
 - [Jest](https://jestjs.io) test runner for all things JavaScript
@@ -69,62 +73,13 @@ This repository has some additional tools already setup:
 - [Prisma](https://prisma.io/) for database ORM
 - [Docker Compose](https://docs.docker.com/compose/) for local database
 
-### Database
-
-I used [Prisma](https://prisma.io/) to manage & access the database. As such you will need a database for this project, either locally or hosted in the cloud.
-
-To make this process easier, I put a [`docker-compose.yml`](https://docs.docker.com/compose/) file to deploy a MySQL server locally with a new database named `bakery`:
-
-```bash
-cd interlogica-coding-assignment
-docker-compose up -d
-```
-
-Once deployed you will need to copy the `.env.example` file to `.env` in order for Prisma to have a `DATABASE_URL` environment variable to access.
-
-```bash
-cp .env.example .env
-```
-
-If you added a custom database name, or use a cloud based database, you will need to update the `DATABASE_URL` in your `.env` accordingly.
-
-Once deployed & up & running, you will need to create & deploy migrations to your database to add the necessary tables. This can be done using [Prisma Migrate](https://www.prisma.io/migrate):
-
-```bash
-npx prisma migrate dev
-```
-
-If you need to push any existing migrations to the database, you can use either the Prisma db push or the Prisma migrate deploy command(s):
-
-```bash
-pnpm db:push
-
-# OR
-
-pnpm db:migrate:deploy
-```
-
-There is slight difference between the two commands & [Prisma offers a breakdown on which command is best to use](https://www.prisma.io/docs/concepts/components/prisma-migrate/db-push#choosing-db-push-or-prisma-migrate).
-
-An optional additional step is to seed some initial or fake data to your database using [Prisma's seeding functionality](https://www.prisma.io/docs/guides/database/seed-database).
-
-To do this update check the seed script located in `packages/database/src/seed.ts` & add or update any users you wish to seed to the database.
-
-Once edited run the following command to run tell Prisma to run the seed script defined in the Prisma configuration:
-
-```bash
-pnpm db:seed
-```
-
-For further more information on migrations, seeding & more, I recommend reading through the [Prisma Documentation](https://www.prisma.io/docs/).
-
 ## Post mortem
 
 A couple of thoughts after finishing this task.
 
 I'll first address the pain points I found throughout the exercise and the talk about the happy bits.
 
-> Disclaimer: in the following paragraphs I'm not trying to blame anyone. I just report my observation. I'll try to keep the most neutral tone possible but I also talk about sensitive topics, like emotion management. Please forgive me in advance for possible slips/bad wording or any shortcomings whatsoever.
+> ⚠️ Disclaimer: in the following paragraphs I'm not trying to blame anyone. I just report my observation. I'll try to keep the most neutral tone possible but I also talk about sensitive topics, like emotion management. Please forgive me in advance for possible slips/bad wording or any shortcomings whatsoever.
 
 ### Pain point # 1: Time Management
 
@@ -160,31 +115,49 @@ But I also came up with quite a few interesting insights on myself while doing t
 I decided to spent most of my time challenging myself programming the database/backend part; which I know being my weakest link in terms of proficiency and knowledge.
 I had the occasion to finally put into use some of the cool libraries I discovered during the last year (Prisma, Nest.js, Turborepo, Vite), getting a grasp of what problems they're trying to solve and the trade-offs made to solve them.
 
+I think I got the right architectural approach, which is to make each program do one thing well (see the [Unix philosophy](https://en.wikipedia.org/wiki/Unix_philosophy)). That was the rationale behind the libraries and framework choices. For example, separating into different apps the `admin` and the `storefront` features allowed me to leverage a better selection tooling and libraries.
+
+A non exaustive list of the benefits:
+
+- Vite [improves the DX](https://vitejs.dev/guide/why.html) allowing quicker iteration,
+- Next.js SSG and SSR [makes better performing pages](https://nextjs.org/docs/pages/building-your-application/rendering/static-site-generation#when-should-i-use-static-generation) which is critical for an e-commerce,
+- Nest.js [CRUD generator](https://docs.nestjs.com/recipes/crud-generator) looked like a drastic time saver to me.
+
+> ☝️ It would make much less sense to do one big frontend project because the `storefront` doesn't need complete CRUD integration and the `admin` feature is actually much more difficult to put together in a SSR context.
+
+Nevertheless, putting everything together was a daunting challenge. I placed a bet on the excellent ecosystem around Turborepo for the integration but I had to do some of the hardwork by myself: there were no integrations with Nest.js out of the box, no (satisfactory) boilerplate projects around and virtually no guides around. So I had to figure out a way to nail a minimal working integration in the time given (far from a trivial task!). I ended up with a good enough result in terms of DX and stability but by the time I finished these I had to concentrate my attention elsewhere or I would fall behind schedule.
+
+But I think it was totally worth it because it gave me an insight on the exceptional work done by the people in the FOSS community and a precious hands on experience to take home.
+
 ## Happy point: it was...satisfactory!
 
-It felt very rewarding to put this together! I cannot blame myself too harshly for not being able to finish the project (I suspect the time constraint is intentionally too short). I feel that I've learned some very valuable knowledge while doing this.
+It felt very rewarding to put this together!
+
+I cannot blame myself too harshly for not being able to finish the project (I suspect the time constraint is intentionally too short). I feel that I've learned some very valuable knowledge while doing this.
 I'm also happy for the effort put into this challenge, I managed to organize my schedule to free up a very important slice of time and that gave me the possibility to put into practice what I learned mostly in the last year.
 
 ## Things that can be improved
 
-Of course my take is far from a perfect solution. There are many more things I would've loved to work on that added so much value to the finished product. Unfortunately, for the reasons explained before, I had to drastically cut the scope and prioritize ruthlessly, putting functionality above everything else.
+Of course my take is far from a perfect solution. There are many more things I would've loved to work on that added so much value to the finished product. Unfortunately, for the reasons explained before, I had to cut corners and prioritize ruthlessly, striving to put together a functional product before doing the fancy stuff.
 
 Here are some of the things I thought about but didn't implemented:
 
 - Architecture
-  - Use same version of common libraries (e.g. React, typescript) across various apps and packages
+  - Hoist common libraries (e.g. React, typescript) at root level for consistency across apps and packages
 - Backend
   - Integration with `tRPC` for better typechecking
 - Frontend
   - Real design system! Right now the `ui` package serves only to demonstrate the architectural benefits of this approach
-  - Performance audit
-  - Accessibility audit
-  - Responsive and mobile styles
-  - Image handling
-    - Automatically generate image previews using next/image
+  - Static Site Generation: the whole point of choosing Next.js over other technology. Sadly, I had to make a compromise on this because things changed radically from version 12 to 13 and time was scarce.
+  - Different CSS tooling. I resorted to [styled-components](https://styled-components.com) because it was the way to go a couple of years ago. Nowadays I'd opt for [vanilla-extract](https://vanilla-extract.style) because it has great type safety, good community support and is more consistent in an SSR setup.
+  - Responsive and mobile styles. The `storefront` app comes from another exercise and I picked it at a point in which it doesn't really have responsive styles.
+  - Image optimizations
+    - Automatically generate image previews using `next/image`
     - Cache generated preview images using Redis caching
     - Open Graph and social meta tags (possibly automatically generated from the content) which makes social sharing look professional by default
-  - Leverage Next router with next/link instead of plain anchor tags
+  - Leverage Next.js router with `next/link` instead of plain anchor tags
   - Social images for the various pages
   - Automatic pretty URLs
   - Support for dark mode
+  - Performance audit
+  - Accessibility audit

@@ -4,7 +4,7 @@
 
 [circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
 [circleci-url]: https://circleci.com/gh/nestjs/nest
-  
+
   <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
     <p align="center">
 <a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
@@ -45,29 +45,17 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
-## Test
+## Wait...there's nothing here! Why?
 
-```bash
-# unit tests
-$ npm run test
+Because my time for coding ran out :P
 
-# e2e tests
-$ npm run test:e2e
+Jokes aside, I chose Nest.js because I was familiar with [Angular](https://angular.io/docs) (which inspired heavily the architecture of this project) and I already used Nest with success for a past exercise.
 
-# test coverage
-$ npm run test:cov
-```
+The defining features that sold me the idea were his [first class Prisma integration](https://docs.nestjs.com/recipes/prisma) and a pretty good [CRUD generator](https://docs.nestjs.com/recipes/crud-generator) which looked like it could solve a large part of my use case in one fell swoop with `nest g resource`.
 
-## Support
+I had some reserves about choosing Nest.js: I was considering going with an [Express](https://expressjs.com/)/[tRPC](https://trpc.io) but I didn't like the fact that I had to write much of the code by myself (maybe an oversight by me, I don't really know much about the Express ecosystem).
+And [looking at this discussion](https://github.com/trpc/trpc/discussions/1504) didn't look like any official support was going to come soon. I thought figuring out a way to integrate Nest.js with tRPC added too much complexity for a take home project and I was worried about it clashing with [another great library](https://marmelab.com/react-admin/) I planned to include in the `admin` app (which **does** have [first class support for Nest.js](https://marmelab.com/react-admin/DataProviderList.html)).
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+In the end, I scratched completely the inclusion of tRPC in favour of the CRUD generator benefits and my familiarity with the Nest.js architecture.
 
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-  Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+I was planning to include an adapter for [react-admin](https://marmelab.com/react-admin) which would have made trivially simple managing the CRUD operations from the `admin` package. But I had to cut scope because my time ran out.
