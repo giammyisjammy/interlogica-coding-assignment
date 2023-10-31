@@ -2,6 +2,36 @@
 
 This is my proposed solution for the Interlogica coding assignment. It uses a Turborepo starter with multiple apps all working in harmony and sharing packages.
 
+## Table of Contents
+
+- [Running this project](#running-this-project)
+- [What's inside?](#whats-inside)
+  - [Apps and Packages](#apps-and-packages)
+  - [Utilities](#utilities)
+- [Post mortem](#post-mortem)
+  - [Pain point # 1](#pain-point--1-time-management)
+  - [Pain point # 2](#pain-point--2-personal-resources)
+  - [Happy point # 1](#happy-point--1-it-wasinteresting)
+  - [Happy point # 2](#happy-point--2-it-wassatisfactory)
+  - [Things that can be improved](#things-that-can-be-improved)
+
+I documented my thought process and decisions in various READMEs across the project.
+
+```bash
+.
+├── apps/
+│   ├── [admin](apps/admin/README.md)
+│   ├── [api](apps/api/README.md)
+│   └── [storefront](apps/storefront/README.md)
+├── packages/
+│   ├── [database](packages/database/README.md)
+│   ├── [eslint-config-custom](packages/eslint-config-custom/README.md)
+│   ├── [jest-presets](packages/jest-presets/README.md)
+│   ├── [logger](packages/logger/README.md)
+│   ├── [tsconfig](packages/tsconfig/README.md)
+│   └── [ui](packages/ui/README.md)
+```
+
 ## Running this project
 
 Make sure you have installed the following toolchain in your machine:
@@ -100,7 +130,7 @@ It still presented some challenges, I'm looking forward to discuss these in pers
 
 I do hope that this gives a better insight into my abilities than a dirty prototype hacked together as quickly as possible. =)
 
-## Pain point # 2: Personal Resources
+### Pain point # 2: Personal Resources
 
 Sadly, I don't own a very performant laptop. I missed my last company's M2 MacBook Pro when my Windows box hang for long minutes, trying to find the resources to run 3 different projects (up to 11 counting the dependencies), a container for the database and the IDE. All while trying to fit it into the limitation of WSL. And disconnecting because of long waiting times.
 
@@ -110,7 +140,7 @@ I guess 4GB of vram for Docker/WSL are really too few for any serious web develo
 
 But I also came up with quite a few interesting insights on myself while doing this exercise.
 
-## Happy point: it was...interesting!
+### Happy point # 1: it was...interesting!
 
 I decided to spent most of my time challenging myself programming the database/backend part; which I know being my weakest link in terms of proficiency and knowledge.
 I had the occasion to finally put into use some of the cool libraries I discovered during the last year (Prisma, Nest.js, Turborepo, Vite), getting a grasp of what problems they're trying to solve and the trade-offs made to solve them.
@@ -129,14 +159,14 @@ Nevertheless, putting everything together was a daunting challenge. I placed a b
 
 But I think it was totally worth it because it gave me an insight on the exceptional work done by the people in the FOSS community and a precious hands on experience to take home.
 
-## Happy point: it was...satisfactory!
+### Happy point # 2: it was...satisfactory!
 
 It felt very rewarding to put this together!
 
 I cannot blame myself too harshly for not being able to finish the project (I suspect the time constraint is intentionally too short). I feel that I've learned some very valuable knowledge while doing this.
 I'm also happy for the effort put into this challenge, I managed to organize my schedule to free up a very important slice of time and that gave me the possibility to put into practice what I learned mostly in the last year.
 
-## Things that can be improved
+### Things that can be improved
 
 Of course my take is far from a perfect solution. There are many more things I would've loved to work on that added so much value to the finished product. Unfortunately, for the reasons explained before, I had to cut corners and prioritize ruthlessly, striving to put together a functional product before doing the fancy stuff.
 
