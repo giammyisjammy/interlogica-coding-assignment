@@ -29,6 +29,7 @@ enum MeasureUnit {
   kg
   ml
   l
+  unit
 }
 
 model Ingredient {

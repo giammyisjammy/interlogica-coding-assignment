@@ -12,8 +12,8 @@
       "cache": false
     },
     "db:seed": {},
-    "generate": {
-      "dependsOn": ["^generate"],
+    "db:generate": {
+      "dependsOn": ["^db:generate"],
       "cache": false
     },
     "test": {

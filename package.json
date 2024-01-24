@@ -7,12 +7,12 @@
   "scripts": {
     "build": "turbo build --concurrency=11",
     "clean": "turbo clean --concurrency=11",
+    "db:generate": "turbo run db:generate --concurrency=11",
     "db:migrate:deploy": "turbo run db:migrate:deploy --concurrency=11",
     "db:push": "turbo run db:push --concurrency=11",
     "db:seed": "turbo run db:seed --concurrency=11",
     "dev": "turbo dev --no-cache --continue --concurrency=11",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "generate": "turbo run generate --concurrency=11",
     "lint": "turbo lint --concurrency=11",
     "test": "turbo test --concurrency=11",
     "typecheck": "turbo typecheck --concurrency=11"
