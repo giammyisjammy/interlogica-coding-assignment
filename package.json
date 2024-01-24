@@ -1,4 +1,7 @@
 {
+  "dependencies": {
+    "@nestjs/mapped-types": "*"
+  },
   "private": true,
   "prisma": {
     "schema": "packages/database/prisma/schema.prisma",
